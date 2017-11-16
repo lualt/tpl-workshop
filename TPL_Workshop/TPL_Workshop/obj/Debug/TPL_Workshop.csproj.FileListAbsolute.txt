@@ -1,0 +1,7 @@
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\bin\Debug\TPL_Workshop.exe.config
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\bin\Debug\TPL_Workshop.exe
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\bin\Debug\TPL_Workshop.pdb
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\obj\Debug\TPL_Workshop.csprojResolveAssemblyReference.cache
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\obj\Debug\TPL_Workshop.csproj.CoreCompileInputs.cache
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\obj\Debug\TPL_Workshop.exe
+C:\Users\Luki\Documents\FH\Parallel Computing\TPL_Workshop\TPL_Workshop\obj\Debug\TPL_Workshop.pdb
