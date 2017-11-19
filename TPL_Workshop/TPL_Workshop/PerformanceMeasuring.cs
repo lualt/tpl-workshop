@@ -10,9 +10,10 @@ namespace TPL_Workshop
     class PerformanceMeasuring
     {
         Stopwatch stopwatch;
-        
-        public PerformanceMeasuring()
+        string text;
+        public PerformanceMeasuring(string text)
         {
+            this.text = text;
             stopwatch = Stopwatch.StartNew();
         }
 
@@ -22,7 +23,7 @@ namespace TPL_Workshop
             //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
             //    stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds,
             //    stopwatch.Elapsed.Milliseconds / 10);
-            Console.WriteLine("Laufzeit des Programms " + stopwatch.Elapsed +" [hh:min:sec]");
+            Console.WriteLine(text + ": Laufzeit = " + stopwatch.Elapsed +" [hh:min:sec]");
             return stopwatch.Elapsed;
         }
     }

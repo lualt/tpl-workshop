@@ -13,23 +13,21 @@ namespace TPL_Workshop
         static void Main()
         {
 
-            PerformanceMeasuring test = new PerformanceMeasuring();
+   
+            FileOperations _fileOperations = new FileOperations();
+            _fileOperations.generateTxtFiles();
+            _fileOperations.replaceTxt();
 
             long totalSize = 0;
+            String[] files = Directory.GetFiles("../../../../data_seriell");
 
-            String[] args = Environment.GetCommandLineArgs();
-            if (args.Length == 1)
+            for (int i=0; i < files.Length; i++)
             {
-                Console.WriteLine("There are no command line arguments.");
-                return;
+                FileInfo fi = new FileInfo(files[i]);
+                long size = fi.Length;
+                Interlocked.Add(ref totalSize, size);
             }
-            if (!Directory.Exists(args[1]))
-            {
-                Console.WriteLine("The directory does not exist.");
-                return;
-            }
-
-            String[] files = Directory.GetFiles(args[1]);
+            
             Parallel.For(0, files.Length,
                          index =>
                          {
@@ -37,10 +35,9 @@ namespace TPL_Workshop
                              long size = fi.Length;
                              Interlocked.Add(ref totalSize, size);
                          });
-            Console.WriteLine("Directory '{0}':", args[1]);
+
             Console.WriteLine("{0:N0} files, {1:N0} bytes", files.Length, totalSize);
 
-            test.stopMeasuring();
             Console.ReadLine();
         }
     }
