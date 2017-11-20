@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dataParallelism.cs" />
-    <Compile Include="FileOperations.cs" />
     <Compile Include="PerformanceMeasuring.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
