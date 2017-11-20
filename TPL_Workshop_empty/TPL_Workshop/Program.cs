@@ -12,12 +12,12 @@ namespace TPL_Workshop
             Console.WriteLine("Starting the program ...");
 
             //TODO TASK 1 implemente these two functions
-            //dataParallelism.generateTxtFiles();
-            //dataParallelism.replaceTxt();
+            dataParallelism.generateTxtFiles();
+            dataParallelism.replaceTxt();
 
             //TODO TASK 2 implemente these two functions 
             //taskParallelism.implicitTasks();
-            taskParallelism.explicitTasks();
+            //taskParallelism.explicitTasks();
 
             Console.WriteLine("Program finished press any key to exit");
             Console.ReadLine();

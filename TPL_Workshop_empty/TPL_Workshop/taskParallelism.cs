@@ -27,34 +27,13 @@ namespace TPL_Workshop
             double[] data = gernateData();
             measureTime = new PerformanceMeasuring("Sequential Calculations");
             //place here code for sequntial running the tasks
-            printMinMaxValues(data);
-            longMeanCalculations(data);
 
-            using (StreamWriter sw = File.CreateText("tempSeq.txt")) {
-                foreach (var temp in data)
-                {
-                    sw.WriteLine(temp.ToString());
-                }
-            }
 
             measureTime.stopMeasuring();
 
             measureTime = new PerformanceMeasuring("Parallel Calculations");
             //place here code for parallel running the tasks
-            Parallel.Invoke(
-                    () => printMinMaxValues(data),
-                    () => longMeanCalculations(data),
-                    () =>
-                    {
-                        using (StreamWriter sw = File.CreateText("tempPara.txt"))
-                        {
-                            foreach (var temp in data)
-                            {
-                                sw.WriteLine(temp.ToString());
-                            }
-                        }
-                    }
-                );
+
             measureTime.stopMeasuring();
         }
 
@@ -71,46 +50,6 @@ namespace TPL_Workshop
              *  Then call the method checkResults(). Implement an execption Handling for the last Task and print the Exception if a exception is thrown to the Command Line.
             */
 
-            Task<String> task = Task.Factory.StartNew(() =>
-            {
-                return generateRandomString();
-            });
-
-            Console.WriteLine("Warte auf Daten");
-            String data = task.Result;
-
-            var calculateTask = Task.Factory.StartNew((Object name) => {
-                MyData retValue = new MyData();
-                retValue.dataStr = name.ToString();
-                retValue.threadID = Thread.CurrentThread.ManagedThreadId;
-                retValue.dataLength = retValue.dataStr.Length;
-                return retValue;
-            }, data);
-
-            //continue with printing
-            var printTask = calculateTask.ContinueWith((x) => {
-                Console.WriteLine("Thread ID ="+x.Result.threadID +" Daten länge="+x.Result.dataLength);
-                checkResults();
-            });
-
-            try         //exception Handling
-            {
-                printTask.Wait();
-            }
-            catch (AggregateException ae)
-            {
-                foreach (var e in ae.InnerExceptions)
-                {
-                    if (e is IOException)
-                    {
-                        Console.WriteLine("Exception geworfen: "+e.Message);
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
         }
 
         class MyData

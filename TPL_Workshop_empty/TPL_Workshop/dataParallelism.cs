@@ -32,21 +32,13 @@ namespace TPL_Workshop
 
             PerformanceMeasuring _perfMes_sequential = new PerformanceMeasuring("File Generation (sequential)");
             //implement sequential file generation here
-            for (int i = 1; i <= 100; i++)
-            {
-                string FilePath = path_seriell + @"File" + i.ToString() + ".txt";
-                _generateTextInFile(FilePath);
-            }
+
             _perfMes_sequential.stopMeasuring();
 
 
             PerformanceMeasuring _perfMes_parallel = new PerformanceMeasuring("File Generation (parallel)");
             //implement parallel file generation here
-            Parallel.For(1, 100, d =>
-            {
-                string FilePath = path_parallel + @"File" + d.ToString() + ".txt";
-                _generateTextInFile(FilePath);
-            });
+
             _perfMes_parallel.stopMeasuring();
 
         }
@@ -63,23 +55,16 @@ namespace TPL_Workshop
             * Save the data in two different folder (path_seriell and path_parallel)
             */
 
-            // sequential implementation 
             PerformanceMeasuring _perfMes_sequentialTxt = new PerformanceMeasuring("Text Replacement (sequential)");
-            foreach (string file in Directory.EnumerateFiles(path_seriell, "*.txt"))
-            {
-                _replaceTextInFile(file);
-            }
+            //implement sequential string replacement here
+
             _perfMes_sequentialTxt.stopMeasuring();
 
 
             // TO DO: parallel implementation 
             PerformanceMeasuring _perfMes_parallelTxt = new PerformanceMeasuring("Text Replacement (parallel)");
             //implement parallel string replacement here
-            Parallel.ForEach(Directory.EnumerateFiles(path_parallel, "*.txt"), file => {
-                {
-                    _replaceTextInFile(file);
-                }
-            });
+
             _perfMes_parallelTxt.stopMeasuring();
 
         }
