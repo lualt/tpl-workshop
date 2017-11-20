@@ -1,2 +1,2 @@
-data_parallel/*
-data_seriell/*
+data_parallel/*.txt
+data_seriell/*.txt
